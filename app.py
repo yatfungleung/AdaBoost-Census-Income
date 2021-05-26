@@ -57,25 +57,30 @@ capital_change_list = [
     'No Capital Change',
     'Capital Loss']
 
-info = st.beta_columns(3)
+customer_details = st.beta_expander('customer details', expanded=True)
 
-with info[0]:
-    hours_per_week = st.selectbox('Hours per Week:', hours_per_week_list)
-    workclass = st.selectbox('Working Class:', workclass_list)
-    occupation = st.selectbox('Occupation:', occupation_list)
-    education = st.selectbox('Education Level:', education_list)
+with customer_details:
+    with st.form(key='my_form'):
+        info = st.beta_columns(3)
 
-with info[1]:
-    race = st.selectbox('Race:', race_list)
-    marital_status = st.selectbox('Marital Status:', marital_status_list)
-    relationship = st.selectbox('Position within Family:', relationship_list)
-    sex = st.selectbox('Sex:', sex_list)
+        with info[0]:
+            hours_per_week = st.selectbox('Hours per Week:', hours_per_week_list)
+            workclass = st.selectbox('Working Class:', workclass_list)
+            occupation = st.selectbox('Occupation:', occupation_list)
+            education = st.selectbox('Education Level:', education_list)
 
-with info[2]:
-    age = st.selectbox('Age:', age_list)
-    capital_change = st.selectbox('Capital Change* in Last Year:', capital_change_list)
-    with st.beta_expander('*'):
-        st.write('"Capital Change" means irregular cash flow, for example: inheritance, company liquidation, etc')
+        with info[1]:
+            race = st.selectbox('Race:', race_list)
+            marital_status = st.selectbox('Marital Status:', marital_status_list)
+            relationship = st.selectbox('Position within Family:', relationship_list)
+            sex = st.selectbox('Sex:', sex_list)
+
+        with info[2]:
+            age = st.selectbox('Age:', age_list)
+            capital_change = st.selectbox('Capital Change* in Last Year:', capital_change_list)
+            st.write('*"Capital Change" means irregular cash flow, for example: inheritance, company liquidation, etc')
+
+        submit_button = st.form_submit_button(label='Submit')
 
 # education encoder
 def educ_encoder(x):
@@ -104,3 +109,4 @@ def capital_change_encoder(x):
         return 'between -50K and 0'
 
 capital_change = capital_change_encoder(capital_change)
+
