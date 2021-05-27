@@ -1,6 +1,7 @@
 import streamlit as st
 import numpy as np
 import pandas as pd
+import pickle
 
 st.title('Potential Customer Identifier')
 
@@ -16,11 +17,17 @@ with st.sidebar.beta_expander('Definition'):
     st.write('''
     "Potential Customer Identifier" is a machine learning classification application.\n
     The dataset that used to train the algorithm behind the application was extracted by Barry Becker from the 1994 US Census database.\n
+    As a result, it mainly focuses on customers in USA.z\n
     Model metrics:\n
     Accuracy: \n
     Sensitivity(Recall): \n
     Precision: \n
     ''')
+
+# load model
+file_name = 'decision_tree_model.pkl'
+with open(file_name, 'rb') as file:
+    model = pickle.load(file)
 
 # data list for users to select
 hours_per_week_list = list(range(100))
@@ -52,10 +59,21 @@ relationship_list = [
 sex_list = ['Female', 'Male']
 age_list = list(range(17,81))
 capital_change_list = [
-    'Capital Gain (>50,000)',
-    'Capital Gain (<=50,000)',
+    'Capital Gain (>50,000 USD)',
+    'Capital Gain (<=50,000 USD)',
     'No Capital Change',
     'Capital Loss']
+native_country_list = [
+    'United-States', 'Cuba', 'Jamaica', 'India', 'Mexico', 'South',
+    'Puerto-Rico', 'Honduras', 'England', 'Canada', 'Germany', 'Iran',
+    'Philippines', 'Italy', 'Poland', 'Columbia', 'Cambodia',
+    'Thailand', 'Ecuador', 'Laos', 'Taiwan', 'Haiti', 'Portugal',
+    'Dominican-Republic', 'El-Salvador', 'France', 'Guatemala',
+    'China', 'Japan', 'Yugoslavia', 'Peru',
+    'Outlying-US(Guam-USVI-etc)', 'Scotland', 'Trinadad&Tobago',
+    'Greece', 'Nicaragua', 'Vietnam', 'Hong', 'Ireland', 'Hungary',
+    'Holand-Netherlands'
+]
 
 customer_details = st.beta_expander('customer details', expanded=True)
 
@@ -77,6 +95,7 @@ with customer_details:
 
         with info[2]:
             age = st.selectbox('Age:', age_list)
+            native_country = st.selectbox('Native Country:', native_country_list)
             capital_change = st.selectbox('Capital Change* in Last Year:', capital_change_list)
             st.write('*"Capital Change" means irregular cash flow, for example: inheritance, company liquidation, etc')
 
@@ -99,9 +118,9 @@ education = educ_encoder(education)
 
 # education encoder
 def capital_change_encoder(x):
-    if x in ['Capital Gain (>50,000)']:
+    if x in ['Capital Gain (>50,000 USD)']:
         return 'equal to 99999'
-    elif x in ['Capital Gain (<=50,000)']:
+    elif x in ['Capital Gain (<=50,000 USD)']:
         return 'between 0 and 50K'
     elif x in ['No Capital Change']:
         return 'equal to 0'
@@ -110,3 +129,25 @@ def capital_change_encoder(x):
 
 capital_change = capital_change_encoder(capital_change)
 
+# new instance
+new = [[
+    age, workclass, education, marital_status, occupation,
+    relationship, race, sex, capital_change, hours_per_week,
+    native_country
+]]
+
+df_new = pd.DataFrame(np.array(new), columns=['age', 'workclass', 'education', 'marital_status', 'occupation',
+       'relationship', 'race', 'sex', 'capital_change', 'hours_per_week',
+       'native_country'])
+
+# prediction by the trained model
+prediction = model.predict(df_new)
+
+result = {
+    0: 'This is NOT a Potential Customer!',
+    1: 'This IS a Potential Customer!'
+    
+}
+
+st.write('According Our Classifier, ')
+st.title(result[prediction.tolist()[0]])
