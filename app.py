@@ -16,13 +16,22 @@ So companies can specify their business strategies towards these target customer
 with st.sidebar.beta_expander('Definition'):
     st.write('''
     "Potential Customer Identifier" is a machine learning classification application.\n
-    The dataset that used to train the algorithm behind the application was extracted by Barry Becker from the 1994 US Census database.\n
-    As a result, it mainly focuses on customers in USA.z\n
+    The dataset that used to train the algorithm was extracted by Barry Becker from the 1994 US Census database.\n
+    As a result, it mainly focuses on customers in USA.\n
+    "Potential Customer" is defined as a customer with over 50,000USD annual income.\n
     Model metrics:\n
-    Accuracy: \n
-    Sensitivity(Recall): \n
-    Precision: \n
+    Sensitivity(Recall): 88%\n
     ''')
+    
+st.sidebar.write('''
+-------------------------\n
+Abraham Leung's contacts:
+''')
+link1 = '[LinkedIn](https://www.linkedin.com/in/abraham-leung-data-science)'
+st.sidebar.markdown(link1, unsafe_allow_html=True)
+link2 = '[GitHub](https://github.com/yatfungleung)'
+st.sidebar.markdown(link2, unsafe_allow_html=True)
+
 
 # load model
 file_name = 'decision_tree_model.pkl'
@@ -75,6 +84,8 @@ native_country_list = [
     'Holand-Netherlands'
 ]
 
+st.write('\n')
+
 customer_details = st.beta_expander('customer details', expanded=True)
 
 with customer_details:
@@ -116,7 +127,7 @@ def educ_encoder(x):
 
 education = educ_encoder(education)
 
-# education encoder
+# capital change encoder
 def capital_change_encoder(x):
     if x in ['Capital Gain (>50,000 USD)']:
         return 'equal to 99999'
@@ -149,5 +160,7 @@ result = {
     
 }
 
+st.write('\n')
+st.write('\n')
 st.write('According Our Classifier, ')
 st.title(result[prediction.tolist()[0]])
