@@ -2,6 +2,7 @@ import streamlit as st
 import numpy as np
 import pandas as pd
 import pickle
+from PIL import Image
 
 st.title('Potential Customer Identifier')
 
@@ -25,12 +26,31 @@ with st.sidebar.beta_expander('Definition'):
     
 st.sidebar.write('''
 -------------------------\n
-Abraham Leung's contacts:
+Contact:
 ''')
-link1 = '[LinkedIn](https://www.linkedin.com/in/abraham-leung-data-science)'
-st.sidebar.markdown(link1, unsafe_allow_html=True)
-link2 = '[GitHub](https://github.com/yatfungleung)'
-st.sidebar.markdown(link2, unsafe_allow_html=True)
+
+linkedin1, linkedin2 = st.sidebar.beta_columns([1,4])
+
+with linkedin1:
+    image1 = Image.open('image\linkedin_logo.png')
+    st.image(image1, width=30)
+
+with linkedin2:
+    link1 = "[Abraham's LinkedIn](https://www.linkedin.com/in/abraham-leung-data-science)"
+    st.markdown(link1, unsafe_allow_html=True)
+
+github1, github2 = st.sidebar.beta_columns([1,4])
+
+with github1:
+    image2 = Image.open('image\github_logo.png')
+    st.image(image2, width=30)
+
+with github2:
+    link2 = "[Abraham's GitHub](https://github.com/yatfungleung)"
+    st.markdown(link2, unsafe_allow_html=True)
+
+# link2 = '[GitHub](https://github.com/yatfungleung)'
+# st.sidebar.markdown(link2, unsafe_allow_html=True)
 
 
 # load model
