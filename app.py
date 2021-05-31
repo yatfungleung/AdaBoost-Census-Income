@@ -8,8 +8,11 @@ st.title('Potential Customer Identifier')
 
 st.write('created by Abraham Leung')
 
+image0 = Image.open('image\abraham_leung_logo.jpg')
+st.sidebar.image(image0, width=30)
+
+st.sidebar.title('Business Value:')
 st.sidebar.write('''
-Business Value:\n
 This software can estimate whether a customer is a high income individial\n
 So companies can specify their business strategies towards these target customers
 ''')
@@ -19,15 +22,13 @@ with st.sidebar.beta_expander('Definition'):
     "Potential Customer Identifier" is a machine learning classification application.\n
     The dataset that used to train the algorithm was extracted by Barry Becker from the 1994 US Census database.\n
     As a result, it mainly focuses on customers in USA.\n
-    "Potential Customer" is defined as a customer with over 50,000USD annual income.\n
-    Model metrics:\n
-    Sensitivity(Recall): 88%\n
+    "Potential Customer" is defined as a customer with over 50,000USD annual income.
     ''')
+    st.title('Model metrics:')
+    st.write('Sensitivity(Recall): 88%')
     
-st.sidebar.write('''
--------------------------\n
-Contact:
-''')
+st.sidebar.write('-------------------------')
+st.sidebar.title('Contact:')
 
 linkedin1, linkedin2 = st.sidebar.beta_columns([1,4])
 
@@ -48,10 +49,6 @@ with github1:
 with github2:
     link2 = "[Abraham's GitHub](https://github.com/yatfungleung)"
     st.markdown(link2, unsafe_allow_html=True)
-
-# link2 = '[GitHub](https://github.com/yatfungleung)'
-# st.sidebar.markdown(link2, unsafe_allow_html=True)
-
 
 # load model
 file_name = 'decision_tree_model.pkl'
