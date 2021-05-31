@@ -8,8 +8,8 @@ st.title('Potential Customer Identifier')
 
 st.write('created by Abraham Leung')
 
-image0 = Image.open('image\abraham_leung_logo.jpg')
-st.sidebar.image(image0, width=30)
+image0 = Image.open('image/abraham_leung_logo.jpg')
+st.sidebar.image(image0, width=300)
 
 st.sidebar.title('Business Value:')
 st.sidebar.write('''
