@@ -36,7 +36,7 @@ st.sidebar.title('Contact:')
 linkedin1, linkedin2 = st.sidebar.beta_columns([1,4])
 
 with linkedin1:
-    image2 = Image.open('image\linkedin_logo.png')
+    image2 = Image.open('image/linkedin_logo.png')
     st.image(image2, width=30)
 
 with linkedin2:
@@ -46,7 +46,7 @@ with linkedin2:
 github1, github2 = st.sidebar.beta_columns([1,4])
 
 with github1:
-    image3 = Image.open('image\github_logo.png')
+    image3 = Image.open('image/github_logo.png')
     st.image(image3, width=30)
 
 with github2:
