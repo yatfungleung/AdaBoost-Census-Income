@@ -3,17 +3,45 @@ This is a project I worked on during the Full Time Data Science and Machine Lear
 
 #### -- Project Status: [Completed]
 
+<br />
+
 ## Deployment
-* Please click the link and have a look: 
-[Potential Customer Identifier](https://share.streamlit.io/yatfungleung/census-income-classification/main/app.py)
+
+### Please click the link and have a look: 
+### [Potential Customer Identifier](https://share.streamlit.io/yatfungleung/census-income-classification/main/app.py)
+
+<br />
+
+#### 3-Step Classifier
+* Step 1: Select the customer's information
+<img src="/image/app_step_1.PNG" width="700">
+
+* Step 2: Press 'Submit'
+<img src="/image/app_step_2.PNG" width="400">
+
+* Step 3: Check your result!
+<img src="/image/app_step_3.PNG" width="700">
+
+<br />
+<br />
+
+### Please click the link and have a look: 
+### [Potential Customer Identifier](https://share.streamlit.io/yatfungleung/census-income-classification/main/app.py)
+
+<br />
+<br />
 
 ## Project Objective
 The purpose of this project is to help companies to identify potential (high income) individuals for marketing campaigns as well as advertising.
+
+<br />
 
 ### Methods Used
 * Statistical Modeling
 * Machine Learning Modeling
 * Resampling
+
+<br />
 
 ### Requirements
 * Python 3.8.5
@@ -25,6 +53,8 @@ The purpose of this project is to help companies to identify potential (high inc
 * imbalanced-learn 0.8.08
 * Streamlit 0.82.0
 * etc.
+
+<br />
 
 ### Project Overview
 * The dataset requires little data cleaning and data formatting
