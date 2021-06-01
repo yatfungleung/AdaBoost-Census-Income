@@ -4,12 +4,15 @@ import pandas as pd
 import pickle
 from PIL import Image
 
+image0 = Image.open('image/shake_hands.jpg')
+st.image(image0)
+
 st.title('Potential Customer Identifier')
 
 st.write('created by Abraham Leung')
 
-image0 = Image.open('image/abraham_leung_logo.jpg')
-st.sidebar.image(image0, width=300)
+image1 = Image.open('image/abraham_leung_logo.jpg')
+st.sidebar.image(image1, width=300)
 
 st.sidebar.title('Business Value:')
 st.sidebar.write('''
@@ -33,8 +36,8 @@ st.sidebar.title('Contact:')
 linkedin1, linkedin2 = st.sidebar.beta_columns([1,4])
 
 with linkedin1:
-    image1 = Image.open('image\linkedin_logo.png')
-    st.image(image1, width=30)
+    image2 = Image.open('image\linkedin_logo.png')
+    st.image(image2, width=30)
 
 with linkedin2:
     link1 = "[Abraham's LinkedIn](https://www.linkedin.com/in/abraham-leung-data-science)"
@@ -43,8 +46,8 @@ with linkedin2:
 github1, github2 = st.sidebar.beta_columns([1,4])
 
 with github1:
-    image2 = Image.open('image\github_logo.png')
-    st.image(image2, width=30)
+    image3 = Image.open('image\github_logo.png')
+    st.image(image3, width=30)
 
 with github2:
     link2 = "[Abraham's GitHub](https://github.com/yatfungleung)"
@@ -56,13 +59,13 @@ with open(file_name, 'rb') as file:
     model = pickle.load(file)
 
 # data list for users to select
-hours_per_week_list = list(range(100))
+hours_per_week_list = [40] + list(range(100))
 workclass_list = [
-    'State-gov', 'Self-emp-not-inc', 'Private', 'Federal-gov',
+    'Private', 'State-gov', 'Self-emp-not-inc', 'Federal-gov',
     'Local-gov', 'Self-emp-inc', 'Without-pay', 'Never-worked'
 ]
 occupation_list = [
-    'Adm-clerical', 'Exec-managerial', 'Handlers-cleaners', 'Prof-specialty',
+    'Prof-specialty', 'Adm-clerical', 'Exec-managerial', 'Handlers-cleaners', 
     'Other-service', 'Sales', 'Craft-repair', 'Transport-moving',
     'Farming-fishing', 'Machine-op-inspct', 'Tech-support', 'Protective-serv',
     'Armed-Forces', 'Priv-house-serv'
@@ -75,19 +78,19 @@ education_list = [
 ]
 race_list = ['White', 'Black', 'Asian-Pac-Islander', 'Amer-Indian-Eskimo', 'Other']
 marital_status_list = [
-    'Never-married', 'Married-civ-spouse', 'Divorced', 'Married-spouse-absent',
+    'Married-civ-spouse', 'Never-married', 'Divorced', 'Married-spouse-absent',
     'Separated', 'Married-AF-spouse', 'Widowed'
 ]
 relationship_list = [
-    'Not-in-family', 'Husband', 'Wife', 'Own-child',
+    'Husband', 'Not-in-family', 'Wife', 'Own-child',
     'Unmarried', 'Other-relative'
 ]
-sex_list = ['Female', 'Male']
-age_list = list(range(17,81))
+sex_list = ['Male', 'Female']
+age_list = [50] + list(range(17,81))
 capital_change_list = [
+    'No Capital Change',
     'Capital Gain (>50,000 USD)',
     'Capital Gain (<=50,000 USD)',
-    'No Capital Change',
     'Capital Loss']
 native_country_list = [
     'United-States', 'Cuba', 'Jamaica', 'India', 'Mexico', 'South',
@@ -177,7 +180,19 @@ result = {
     
 }
 
+image4 = Image.open('image/negative_sign.jpg')
+image5 = Image.open('image/positive_sign.jpg')
+
 st.write('\n')
 st.write('\n')
 st.write('According Our Classifier, ')
 st.title(result[prediction.tolist()[0]])
+st.write('\n')
+st.write('\n')
+
+space1, sign, space2 = st.beta_columns([3,4,3])
+with sign:
+    if prediction.tolist()[0] == 0:
+        st.image(image4, width=200)
+    elif prediction.tolist()[0] == 1:
+        st.image(image5, width=200)
