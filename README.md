@@ -67,3 +67,11 @@ The purpose of this project is to help companies to identify potential (high inc
   * Feature distributions
   * Observations against target feature
   * Correlation heatmap
+* [Final Preprocessing & Modelling(.ipynb)](/4_final_preprocessing_modelling.ipynb)
+  * Logistic Regression
+  * Logistic Regression with ADASYN
+  * Linear Support Vector Classification
+  * K Nearest Neighbors Classification
+  * Decision Tree Classification
+  * Adaptive Boosting (Adaboost) Classification
+  * Performance Metrics Comparison
