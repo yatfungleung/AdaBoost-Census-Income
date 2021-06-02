@@ -57,8 +57,13 @@ The purpose of this project is to help companies to identify potential (high inc
 <br />
 
 ### Project Overview
-* The dataset requires little data cleaning and data formatting
-* Data encoding and outliers handling are also needed
-* EDA is then conducted for a thorough observation of the data
-* Next, we do preprocessing for modelling part
-* Lastly, we train the data by various models and measure their performances
+* [Data Cleaning(.ipynb)](/1_data_cleaning.ipynb)
+  * Feature selection
+  * Handling missing data
+* [Initial Data Preprocessing(.ipynb)](/2_data_initial_preprocessing.ipynb)
+  * Data encoding
+  * Handling outliers
+* [Exploratory Data Analysis(.ipynb)](/3_EDA.ipynb)
+  * Feature distributions
+  * Observations against target feature
+  * Correlation heatmap
