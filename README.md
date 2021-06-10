@@ -7,6 +7,11 @@ This is a project I worked on during the Full Time Data Science and Machine Lear
 
 <br />
 
+## Project Objective
+The purpose of this project is to help companies to identify potential (high income) individuals for marketing campaigns as well as advertising.
+
+<br />
+
 ## Deployment
 
 ### Please click the link and have a look: 
@@ -31,11 +36,6 @@ This is a project I worked on during the Full Time Data Science and Machine Lear
 ### [Potential Customer Identifier](https://share.streamlit.io/yatfungleung/census-income-classification/main/app.py)
 
 <br />
-<br />
-
-## Project Objective
-The purpose of this project is to help companies to identify potential (high income) individuals for marketing campaigns as well as advertising.
-
 <br />
 
 ### Methods Used
