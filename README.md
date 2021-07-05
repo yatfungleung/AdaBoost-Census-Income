@@ -30,12 +30,10 @@ The purpose of this project is to help companies to identify potential (high inc
 <img src="/image/app_step_3.PNG" width="700">
 
 <br />
-<br />
 
 ### Please click the link and have a look: 
 ### [Potential Customer Identifier](https://share.streamlit.io/yatfungleung/census-income-classification/main/app.py)
 
-<br />
 <br />
 
 ### Methods Used
